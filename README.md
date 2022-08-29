@@ -22,10 +22,9 @@ https://github.com/users/BDukesuwu/projects/3
 - [Imgur](https://imgur.com/)
 
 ---
-<details open>
-<summary>Wireframes?</summary>
+<details>
+<summary>Wireframes</summary>
 <br>
-## Wireframes
 ![Anime Watchlist Login Page](https://imgur.com/F0e1CK9.png)
 ![Anime Watchlist Anime List Page](https://imgur.com/oEEh9EX.png)
 ![Anime Watchlist Review Page](https://imgur.com/9e0GCAh.png)
