@@ -1,4 +1,4 @@
 # Anime watchlist
-## ERG
+## ERD
 ![erg picture](Brianna-Dukes-ERD.PNG)
 
