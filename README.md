@@ -44,3 +44,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae dui euismod
 ## Credits
 
 * My very knowledgeable and patient instructional team and classmates
+
+
+#### Comments
+
+|HTTP|URL|Controller|Purpose|
+|---|---|---|---|
+| n/a | n/a | index action | View all the reviews for an anime |
+| n/a | n/a | show action | Viewing a single review is useless |
+| n/a | n/a | new action | Display the form to add a new review on the animes detail view |
+| POST | /anime/:id/comments | commentsCtrl.create | Handle the new comment form being submitted |
+| GET | /comments/:id/edit | commentsCtrl.edit | View a form for editing a comment (for logged in user) |
+| PUT | /comments/:id| commentsCtrl.update | Handle the edit comment form being submitted (for logged in user) |
+| DELETE | /comments/:id| commentsCtrl.delete | Delete comment (for logged in user) |
+
