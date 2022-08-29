@@ -1,2 +1,4 @@
-# Anime-WatchList
-An anime watchlist project using mongoose and express
+# Anime watchlist
+##ERG
+![erg picture](Brianna-Dukes-ERD.PNG)
+
