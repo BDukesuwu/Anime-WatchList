@@ -1,6 +1,6 @@
 # Anime watchlist
 ## ERD
-![erg picture](Brianna-Dukes-ERD.PNG)
+![ERD List](https://imgur.com/x1jUSU7.png)
 
 ## Technologies Used
 
