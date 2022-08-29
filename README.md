@@ -1,4 +1,8 @@
 # Anime watchlist
+---
+## User Stories 
+https://github.com/users/BDukesuwu/projects/3
+---
 ## ERD
 ![ERD List](https://imgur.com/x1jUSU7.png)
 
