@@ -19,10 +19,10 @@
 
 ---
 ## Wireframes
-![Anime Watchlist Login Page](https://imgur.com/F0e1CK9)
-![Anime Watchlist Anime List Page](https://imgur.com/oEEh9EX)
-![Anime Watchlist Review Page](https://imgur.com/9e0GCAh)
-![Anime Watchlist Watchlist Page](https://imgur.com/Pd2BgOJ)
+![Anime Watchlist Login Page](https://imgur.com/F0e1CK9.png)
+![Anime Watchlist Anime List Page](https://imgur.com/oEEh9EX.png)
+![Anime Watchlist Review Page](https://imgur.com/9e0GCAh.png)
+![Anime Watchlist Watchlist Page](https://imgur.com/Pd2BgOJ.png)
 ---
 ## Wins
 
