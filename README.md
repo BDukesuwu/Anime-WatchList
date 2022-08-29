@@ -18,3 +18,19 @@
 - [Imgur](https://imgur.com/)
 
 ---
+## Wins
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae dui euismod, vulputate odio a, ultricies ante. Mauris non quam ornare, sodales mauris eget, luctus libero. Curabitur a pulvinar augue. In vitae posuere risus. Nunc rutrum purus a dolor auctor, et convallis mauris dapibus. Mauris ac lobortis ipsum. Sed tempus lectus vitae velit consequat condimentum.
+
+## Hurdles
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae dui euismod, vulputate odio a, ultricies ante. Mauris non quam ornare, sodales mauris eget, luctus libero. Curabitur a pulvinar augue. In vitae posuere risus. Nunc rutrum purus a dolor auctor, et convallis mauris dapibus. Mauris ac lobortis ipsum. Sed tempus lectus vitae velit consequat condimentum.
+
+## Next Steps
+
+- [ ] Add a food category selection where the user can choose if the food item goes in the fridge, freezer or pantry list.
+- [ ] Add a *Add To Grocery List* button in the food details page to add to a grocery list.
+- [ ] Add functionality to where the food item that is past it's expiration date will go red and go to an expired foods list.
+
+## Credits
+
+* My very knowledgeable and patient instructional team and classmates
