@@ -37,8 +37,8 @@ https://github.com/users/BDukesuwu/projects/3
 | n/a | n/a | new action | Display the form to add a new review on the animes detail view |
 | POST | /anime/:id/reviews | reviewsCtrl.create | Handle the new reviews form being submitted |
 | GET | /reviews/:id/edit | reviewsCtrl.edit | View a form for editing a reviews (for logged in user only) |
-| PUT | /reviews/:id| reviewsCtrl.update | Handle the edit reviews form being submitted (for logged in user only) |
-| DELETE | /reviews/:id| reviewsCtrl.delete | Delete reviews (for logged in user only) |
+| PUT | /reviews/:id| reviewCtrl.update | Handle the edit reviews form being submitted (for logged in user only) |
+| DELETE | /reviews/:id| reviewCtrl.delete | Delete reviews (for logged in user only) |
 
 ---
 
