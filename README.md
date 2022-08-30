@@ -18,15 +18,15 @@ https://github.com/users/BDukesuwu/projects/3
 
 |HTTP|URL|Controller|Purpose|
 |---|---|---|---|
-| GET | /anime | animeCtrl.index	| View all anime watched/starred by the logged in user |		
-|	GET	| /anime/all | animeCtrl.allAnime	| View all the anime regardless of who watched what |			
-|	GET	| /anime/:id | animeCtrl.show	| View the details of any anime |
-|	GET	| /animenew | animeCtrl.new	| View a form for submitting a new anime to the list |		
-|	POST | /anime | animeCtrl.create	| Handle the new anime form being submitted |
-|	GET	| /anime/:id/edit |	animeCtrl.edit | View a form for editing an anime (for logged in user only) |	
-|	PUT	| /anime/:id | animeCtrl.update| Handle the edit anime form being submitted (for logged in user only) |	
-|	DELETE | /anime/:id | animeCtrl.delete | Delete an anime submission(for logged in user only) |
-|	POST | /anime/:id | animeCtrl.addWatching | Add the logged in user/weeb id to an anime's watched array |		
+| GET | /animes | animesCtrl.index	| View all anime watched/starred by the logged in user |		
+|	GET	| /animes/all | animesCtrl.allAnime	| View all the anime regardless of who watched what |			
+|	GET	| /animes/:id | animesCtrl.show	| View the details of any anime |
+|	GET	| /animesnew | animesCtrl.new	| View a form for submitting a new anime to the list |		
+|	POST | /animes | animesCtrl.create	| Handle the new anime form being submitted |
+|	GET	| /animes/:id/edit |	animesCtrl.edit | View a form for editing an anime (for logged in user only) |	
+|	PUT	| /animes/:id | animesCtrl.update| Handle the edit anime form being submitted (for logged in user only) |	
+|	DELETE | /animes/:id | animesCtrl.delete | Delete an anime submission(for logged in user only) |
+|	POST | /animes/:id | animesCtrl.addWatching | Add the logged in user/weeb id to an anime's watched array |		
 
 #### Reviews
 
@@ -35,10 +35,10 @@ https://github.com/users/BDukesuwu/projects/3
 | n/a | n/a | index action | View all the reviews for an anime |
 | n/a | n/a | show action | Viewing a single review is useless |
 | n/a | n/a | new action | Display the form to add a new review on the animes detail view |
-| POST | /anime/:id/reviews | commentsCtrl.create | Handle the new comment form being submitted |
-| GET | /reviews/:id/edit | commentsCtrl.edit | View a form for editing a comment (for logged in user only) |
-| PUT | /reviews/:id| commentsCtrl.update | Handle the edit comment form being submitted (for logged in user only) |
-| DELETE | /reviews/:id| commentsCtrl.delete | Delete comment (for logged in user only) |
+| POST | /anime/:id/reviews | reviewsCtrl.create | Handle the new reviews form being submitted |
+| GET | /reviews/:id/edit | reviewsCtrl.edit | View a form for editing a reviews (for logged in user only) |
+| PUT | /reviews/:id| reviewCtrl.update | Handle the edit reviews form being submitted (for logged in user only) |
+| DELETE | /reviews/:id| reviewCtrl.delete | Delete reviews (for logged in user only) |
 
 ---
 
