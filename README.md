@@ -18,15 +18,15 @@ https://github.com/users/BDukesuwu/projects/3
 
 |HTTP|URL|Controller|Purpose|
 |---|---|---|---|
-| GET | /anime | animesCtrl.index	| View all anime watched/starred by the logged in user |		
-|	GET	| /anime/all | animesCtrl.allAnime	| View all the anime regardless of who watched what |			
-|	GET	| /anime/:id | animesCtrl.show	| View the details of any anime |
-|	GET	| /animenew | animesCtrl.new	| View a form for submitting a new anime to the list |		
-|	POST | /anime | animesCtrl.create	| Handle the new anime form being submitted |
-|	GET	| /anime/:id/edit |	animesCtrl.edit | View a form for editing an anime (for logged in user only) |	
-|	PUT	| /anime/:id | animesCtrl.update| Handle the edit anime form being submitted (for logged in user only) |	
-|	DELETE | /anime/:id | animesCtrl.delete | Delete an anime submission(for logged in user only) |
-|	POST | /anime/:id | animesCtrl.addWatching | Add the logged in user/weeb id to an anime's watched array |		
+| GET | /animes | animesCtrl.index	| View all anime watched/starred by the logged in user |		
+|	GET	| /animes/all | animesCtrl.allAnime	| View all the anime regardless of who watched what |			
+|	GET	| /animes/:id | animesCtrl.show	| View the details of any anime |
+|	GET	| /animesnew | animesCtrl.new	| View a form for submitting a new anime to the list |		
+|	POST | /animes | animesCtrl.create	| Handle the new anime form being submitted |
+|	GET	| /animes/:id/edit |	animesCtrl.edit | View a form for editing an anime (for logged in user only) |	
+|	PUT	| /animes/:id | animesCtrl.update| Handle the edit anime form being submitted (for logged in user only) |	
+|	DELETE | /animes/:id | animesCtrl.delete | Delete an anime submission(for logged in user only) |
+|	POST | /animes/:id | animesCtrl.addWatching | Add the logged in user/weeb id to an anime's watched array |		
 
 #### Reviews
 
