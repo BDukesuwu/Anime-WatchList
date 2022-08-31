@@ -3,14 +3,14 @@ const Vactor = require('../models/vactor');
 
 function index(req, res) {
   Anime.find({}, function(err, animes) {
-    res.render('animes/index', { title: 'All animes', animes });
+    res.render('animes/index', { title: 'All Anime', animes });
   });
 }
 
 function show(req, res) {
   // Find the cast that belongs to the anime
-  Anime.findById(req.params.id)
-    .populate('cast').exec(function(err, anime) {
+  Anime.findById(req.params.id) // the show function will find the anime's id in the database
+    .populate('cast').exec(function(err, anime) { //find the cast attached to that anime
       Vactor.find(
         {_id: {$nin: anime.cast}},
         function(err, vactors) {
@@ -34,7 +34,7 @@ function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
   }
-  const anime = new anime(req.body);
+  const anime = new Anime(req.body);
   anime.save(function(err) {
     if (err) return res.redirect('/animes/new');
     res.redirect(`/animes/${anime._id}`);

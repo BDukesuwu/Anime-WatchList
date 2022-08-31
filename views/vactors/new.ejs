@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<div>IF THE VOICE ACTOR IS LISTED BELOW, PLEASE DO NOT ENTER THEIR NAME AGAIN:</div>
+<section>
+  <% vactors.forEach(function(p) { %>
+    <article class="badge"><%= p.name %></article>
+  <% }) %>
+</section>
+
+<form id="add-vactor-form" action="/vactors" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name">
+  <label>DOB:</label>
+  <input type="date" name="born">
+  <input type="submit" value="Add new voice actor">
+</form>
+
+<%- include('../partials/footer') %>

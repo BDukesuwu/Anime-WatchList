@@ -7,8 +7,8 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema({
   content: String,    //where the user will type the review
   rating: {type: Number, min: 1, max: 5, default: 5}, // where the user leaves a review. needs to be from 1 - 5, 1 the lowest, 5 the highest
-  user: {type: Schema.Types.ObjectId, ref: 'User'},     
-  userName: String,   //display the user's name with the ereview
+  user: {type: Schema.Types.ObjectId, ref: 'User'},   //grab users object id  
+  userName: String,   //display the user's name with the review
   userAvatar: String    //display the users avatar/profile picture with the review
 }, {
   timestamps: true
@@ -28,11 +28,10 @@ const animeSchema = new Schema({
       return new Date().getFullYear();
     }
   },
-
-  animeRating: String,
+  animeGenre: String,
   cast: [{
     type:Schema.Types.ObjectId,           //what type the path should be
-    ref: 'vactor'                         //reference the voiceactors schema for the cast
+    ref: 'Vactor'                         //reference the voiceactors schema for the cast
   }],
   onGoing: { type: Boolean, default: false, required: true }, //its require to add if the anime is still ongoing or not as a yes or no statement
   reviews: [reviewSchema],                      // grab data from the review schema to display here under the anime

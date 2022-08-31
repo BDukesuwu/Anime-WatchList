@@ -19,10 +19,8 @@ var vactorsRouter = require('./routes/vactors');
 // create the express app
 const app = express();
 
-// tell the express the location of the views folder
-app.set('views', path.join(__dirname, 'views'));
-// tell express to use ejs templating system
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, './views'));  // tell the express the location of the views folder
+app.set('view engine', 'ejs');    // tell express to use ejs templating system
 
 app.use(logger('dev'));
 app.use(express.json());
