@@ -3,7 +3,7 @@ const Vactor = require('../models/vactor');
 
 function index(req, res) {
   Anime.find({}, function(err, animes) {
-    res.render('animes/index', { title: 'All animes', animes });
+    res.render('animes/index', { title: 'All Anime', animes });
   });
 }
 

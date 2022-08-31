@@ -29,7 +29,7 @@ const animeSchema = new Schema({
     }
   },
 
-  animeRating: String,
+  animeGenre: String,
   cast: [{
     type:Schema.Types.ObjectId,           //what type the path should be
     ref: 'vactor'                         //reference the voiceactors schema for the cast
