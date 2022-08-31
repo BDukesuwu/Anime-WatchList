@@ -28,6 +28,7 @@ const animeSchema = new Schema({
       return new Date().getFullYear();
     }
   },
+
   animeGenre: String,
   cast: [{
     type:Schema.Types.ObjectId,           //what type the path should be
