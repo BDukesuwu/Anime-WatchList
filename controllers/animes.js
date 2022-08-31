@@ -1,30 +1,30 @@
-const anime = require('../models/anime');
-const vactor = require('../models/vactor');
+const Anime = require('../models/anime');
+const Vactor = require('../models/vactor');
 
 function index(req, res) {
-  anime.find({}, function(err, animes) {
+  Anime.find({}, function(err, animes) {
     res.render('animes/index', { title: 'All animes', animes });
   });
 }
 
 function show(req, res) {
   // Find the cast that belongs to the anime
-  anime.findById(req.params.id)
+  Anime.findById(req.params.id)
     .populate('cast').exec(function(err, anime) {
-      vactor.find(
+      Vactor.find(
         {_id: {$nin: anime.cast}},
         function(err, vactors) {
             res.render('animes/show',{
               title : 'Anime Detail', // this is H1 tag
-              anime, // this will have all the actors
-              vactors // this will the actors that not in the anime
+              anime, // this will have all the voice actors in the anime
+              vactors // this will have all the voice actors even if they arent in the anime
             });
         }
       );
     });
 }
 
-function newanime(req, res) {
+function newAnime(req, res) {
   res.render('animes/new', { title: 'Add Anime' });
 }
 
@@ -44,6 +44,6 @@ function create(req, res) {
 module.exports = {
   index,
   show,
-  new: newanime,
+  new: newAnime,
   create
 };
