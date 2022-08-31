@@ -25,7 +25,7 @@ https://github.com/users/BDukesuwu/projects/3
 |	GET	| /animes/:id/edit |	animesCtrl.edit | View a form for editing an anime (for logged in user only) |
 |	DELETE | /animes/:id | animesCtrl.delete | Delete an anime submission(for logged in user only) |
 |	POST | /animes/:id | animesCtrl.addWatching | Add the logged in user/weeb id to an anime's watched array |
-|	GET	| /animes/all | animesCtrl.allAnime	| View all anime watched/starred by the logged in user |
+|	GET	| /animes/watched | animesCtrl.watchedAnime	| View all anime watched(starred) by the logged in user |
 |	PUT	| /animes/:id | animesCtrl.update| Handle the edit anime form being submitted (for logged in user only) |
 
 #### Reviews
