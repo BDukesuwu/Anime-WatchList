@@ -28,15 +28,14 @@ const animeSchema = new Schema({
       return new Date().getFullYear();
     }
   },
-
   animeGenre: String,
   cast: [{
     type:Schema.Types.ObjectId,           //what type the path should be
     ref: 'Vactor'                         //reference the voiceactors schema for the cast
   }],
   onGoing: { type: Boolean, default: false, required: true }, //its require to add if the anime is still ongoing or not as a yes or no statement
-  reviews: [reviewSchema],                      // grab data from the review schema to display here under the anime
-  content: String,                               // where the user will add the synapsis
+  reviews: [reviewSchema],                     // grab data from the review schema to display here under the anime
+  animeSynopsis: String,
 }, {
   timestamps: true
 });

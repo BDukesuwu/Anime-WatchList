@@ -1,6 +1,9 @@
+<%- include('../partials/header') %>
 <form id="new-form" action="/animes" method="POST">
     <label>Title:</label>
     <input type="text" name="title">
+    <label>Synopsis</label>
+    <textarea name="animeSynopsis"></textarea>
     <label>Release Year:</label>
     <input type="text" name="releaseYear">
     <label>Genre</label>
@@ -22,6 +25,7 @@
     </select>
     <label>Is the anime On-Going?:</label>
     <input type="checkbox" name="onGoing" checked>
+
     <input type="submit" value="Add new Anime">
   </form>
   

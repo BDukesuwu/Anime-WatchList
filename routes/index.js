@@ -2,19 +2,16 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+//get homepage and if user uses empty '/', redirect to /animes
 router.get('/', function(req, res, next) {
   res.redirect('/animes');
 });
 
-module.exports = router;
-
-
-// Google login
+// Google OAuth login
 router.get('/auth/google', passport.authenticate(
   'google',                     //since im using google auth, put google here
   {scope: ['profile', 'email']} //will grab user profile and email
 ));
-
 
 // Google call back route
 router.get('/oauth2callback', passport.authenticate(
@@ -25,10 +22,13 @@ router.get('/oauth2callback', passport.authenticate(
   }
 ));
 
-//when the user logs out, kill the cookie and redirect to the homepge, google logout
-router.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/animes');
+//when the user logs out, kill the cookie and redirect to the homepage, google logout
+router.get('/logout', function(req, res){
+  req.logout(function(err) {
+    if(err) { return next(err); }
+    res.redirect('/');
+  });
+
 });
 
 module.exports = router;
