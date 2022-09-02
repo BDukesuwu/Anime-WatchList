@@ -8,7 +8,7 @@ router.get('/new', isLoggedIn, animesCtrl.new);
 router.get('/:id', animesCtrl.show);
 router.post('/', isLoggedIn, animesCtrl.create);
 
-router.get('/watchlist/new', isLoggedIn, animesCtrl.new); //will look just liike the anime screen but with
+router.get('/watchlist/index', isLoggedIn, animesCtrl.new); //will look just liike the anime screen but with
 //only checked anime from the user
 
 

@@ -9,10 +9,9 @@
 </head>
 <body>
 <nav>
-    <a href="/animes" <%- title === 'All anime' ? 'class="active"' : '' %>>ALL ANIME</a>
+    <a href="/animes" <%- title === 'All Anime' ? 'class="active"' : '' %>>ALL ANIME</a>
     <% if (user) { %>
-        <a href="/watchlist/new" <%- title === 'You watchlist' ? 'class="active"' : '' %>>
-            MY WATCHLIST</a>
+        <a href="/watchlist/index" <%- title === 'Your watchlist' ? 'class="active"' : '' %>>MY WATCHLIST</a>
         <a href="/vactors/new" <%- title === 'Add vactor' ? 'class="active"' : '' %>>
             ADD VOICE ACTOR</a>
         <a href="/animes/new" <%- title === 'Add anime' ? 'class="active"' : '' %>>ADD ANIME</a>

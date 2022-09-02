@@ -6,8 +6,9 @@
       <th>Release<br>Year</th>
       <th>Genre</th>
       <th>Series<br>Ongoing</th>
+      <th>About</th>
       <% if (user) {%> <!--if the user is logged in, they can see the watchlist header-->
-      <th>Watched<br>Anime</th>
+        <th>Watched?</th>
       <%}%>
     </tr>
   </thead>
@@ -21,12 +22,17 @@
         <td><a href="/animes/<%= m._id %>">INFO</a></td>
 
         <% if (user) {%> <!-- if the user is logged in, they can click a checkbox to add the item to their watchlist-->
-        <td><input type="checkbox" name="weebWatching"></td>
+          <td><input type="checkbox" name="weebWatching"></td>
         <%}%>
 
       </tr>
       <% }); %>
     </tbody>
   </table>
+
+  <script>
+
+
+  </script>
   
 <%- include('../partials/footer') %>

@@ -15,6 +15,7 @@ var indexRouter = require('./routes/index');
 var animesRouter = require('./routes/animes');
 var reviewsRouter = require('./routes/reviews');
 var vactorsRouter = require('./routes/vactors');
+var watchlistRouter = require('./routes/watchlist');
 
 // create the express app
 const app = express();
@@ -48,6 +49,7 @@ app.use('/', indexRouter);
 app.use('/animes', animesRouter);
 app.use('/', reviewsRouter);
 app.use('/', vactorsRouter);
+app.use('/', watchlistRouter )
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
