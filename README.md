@@ -70,18 +70,20 @@ https://github.com/users/BDukesuwu/projects/3
 
 ## Wins
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae dui euismod, vulputate odio a, ultricies ante. Mauris non quam ornare, sodales mauris eget, luctus libero. Curabitur a pulvinar augue. In vitae posuere risus. Nunc rutrum purus a dolor auctor, et convallis mauris dapibus. Mauris ac lobortis ipsum. Sed tempus lectus vitae velit consequat condimentum.
+- I got C,R,D working, and am very close to finishing U. Just so happened to run out of time just as the answer was almost in my hands.
 
 ## Hurdles
 
 - My first reaction is to look for bigger issues and check stack overflow. I wasted hours because of this when the issue was me missing one letter. (anime needed to say animes) In the future, I think I should first check for small and simple mishaps before searching for bigger problems, that way if its a simple typo, I search for it and catch it early on and not after 5 hopurs on stack overflow
 
+- UPDATE.
+
 ## Next Steps
 
-- [ ] Add 
-- [ ] Add 
-- [ ] Add 
+- [ ] Add functuonality to the checklist to add items to the watchlist
+- [ ] Add function that stores the updated review and displays it
+- [ ] Add photos and links to go watch the anime on Crunchyroll
 
 ## Credits
 
-* My very knowledgeable and patient instructional team and classmates
+* Special thanks to Beverly, Rondell, and Ann, but also just everyone in general helps me realize I'm not alone in this. I was beating myself up about the update function and then realized almost everyone was stuck on the same thing. Everyone worked hard and that inspired me to keep working hard instead of like break down and take a nap so thank you all.
