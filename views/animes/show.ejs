@@ -1,16 +1,25 @@
 <%- include('../partials/header') %>
 
-<section id="show-page">
-    <div>Title: </div>
-    <div><%= anime.title %></div>
-    <div>Release Year: </div>
-    <div><%= anime.releaseYear %></div>
-    <div>Genre: </div>
-    <div><%= anime.animeGenre %></div>
-    <div>Ongoing Anime?: </div>
-    <div><%= anime.onGoing ? 'YEP' : 'Nope' %></div>
-    <div>Synopsis: </div>
-   <div><%= anime.animeSynopsis %></div>
+<table id="show-list">
+    <thead>
+        <tr>
+        <th> Title:</th>
+        <th>Release Year: </th>
+        <th>Genre:</th>
+        <th>Ongoing Anime?:</th>
+        <th>Synopsis: </th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr>
+    <td><%= anime.title %></td>
+    <td><%= anime.releaseYear %></td>
+    <td><%= anime.animeGenre %></td>
+    <td><%= anime.onGoing ? 'YEP' : 'Nope' %></td>
+   <td><%= anime.animeSynopsis %></td>
+</tr>
+</tbody>
 
     <!-- the logged in user can add cast list members to this anime. -->
     <div>Cast:</div>
@@ -76,11 +85,37 @@
                 <td><%= r.rating %></td>
                 <td>
 
+
             <!--if user is logged in and matches the user who left review, they can edit-->
                     <% if (user && user._id.equals(r.user)) { %>
+
+                        <!--form to edit your review-->
+                        <form id="hidden-edit">
+                            <label>Edit Review</label>
+                            <br>
+                            <textarea name="content"></textarea>
+                                <button type="submit">Submit Changes</button>
+                        </form>
+
+                    <button id="btn">EDIT</button>
+
+                        <script>
+                            
+                        const btn = document.getElementById('btn');
+
+                    btn.addEventListener('click', () => {
+                    const form = document.getElementById('hidden-edit');
+
+                    if (form.style.display === 'none') {
+                        form.style.display = 'block'; //show the form 
+                    } else {
+                        form.style.display = 'none'; // hide teh form
+                    }
+                    });
+                    </script>
+
+
                     <form action="/reviews/<%= r._id %>?_method=PUT" method="POST">
-                        <button type="submit">EDIT</button>
-                    </form>
                     <% } %>
 
              <!--if user is logged in and matches the user who left review, they can delete-->

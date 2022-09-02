@@ -15,7 +15,7 @@ function show(req, res) {
         {_id: {$nin: anime.cast}},
         function(err, vactors) {
             res.render('animes/show',{
-              title : 'Anime Detail', // this is H1 tag
+              title : 'Anime Details', // this is H1 tag
               anime, // this will have all the voice actors in the anime
               vactors // this will have all the voice actors even if they arent in the anime
             });

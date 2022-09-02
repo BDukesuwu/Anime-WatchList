@@ -4,6 +4,10 @@
     color: #f8aae5;
   }
 
+  a {
+    color: #d400ff;
+  }
+  
   body {
     margin: 0;
     height: 100vh;
@@ -24,3 +28,36 @@
   .login img {
     height: 30px;
   }
+
+  #hidden-edit {
+    display: none;
+  }
+
+  table td {
+    padding: 1em;
+    text-align: center;
+  }
+  table thead th {
+    padding: 1.3em;
+    border-bottom: 2px solid #424748;
+  }
+  table {
+    font-size: 1.1em;
+  }
+  
+  nav > a {
+    margin: 1em;
+    text-decoration: none;
+    padding: 10px;
+    border: black solid 2px;
+    border-radius: 5px;
+  }
+
+#new-form *,
+#add-review-form *,
+#add-vactor-form * {
+  font-size: 1.3em;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
