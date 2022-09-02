@@ -1,3 +1,5 @@
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 const Anime = require('../models/anime');
 
 function create(req, res) {
@@ -18,13 +20,35 @@ function create(req, res) {
   });
 }
 
+//need a function for editing a review, but the user must be
+//logged in and can't edit a review not posted by them
+function editReview(req,res) {
+  Anime.findOne({id:req.params.id}, function(err, reviews) {
+    if (err || !anime) return res.redirect('/animes');
+    res.render(`/animes/${anime._id}`, {title: "Edit Review", reviews});
+  });
+}
+
+
+
+function updateReview(req, res, next) {
+  Anime.findOneAndUpdate(
+    {id: req.params.id},  // change the review to have the updated proterties
+    req.body,
+    {new: true}, //old is returned by default, return the new document instead (with the update)
+  function(err, reviews) {
+    if (err || !anime) return res.redirect('/animes')
+    res.redirect(`/animes/${anime._id}`, reviews);
+    });
+}
+
 
 // Include the next parameter - used for error handling in the catch
 function deleteReview(req, res, next) {
   Anime.findOne({'reviews._id': req.params.id}).then(function(anime) { //find review and its id
-    const review = anime.reviews.id(req.params.id); 
-    if (!review.user.equals(req.user._id)) return res.redirect(`/animes/${anime._id}`); // Ensure that the review was created by the logged in user
-    review.remove();                          // Remove the review using the remove method of the subdoc
+    const reviews = anime.reviews.id(req.params.id); 
+    if (!reviews.user.equals(req.user._id)) return res.redirect(`/animes/${anime._id}`); // Ensure that the review was created by the logged in user
+    reviews.remove();                          // Remove the review using the remove method of the subdoc
     anime.save().then(function() {            // Save the updated anime
       res.redirect(`/animes/${anime._id}`);   // Redirect back to the anime's show view
     }).catch(function(err) {                  // Let Express display an error
@@ -33,7 +57,10 @@ function deleteReview(req, res, next) {
   });
 }
 
+
 module.exports = {
   create,
   delete: deleteReview,
+  edit: editReview,
+  update: updateReview,
 };

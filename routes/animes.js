@@ -8,4 +8,5 @@ router.get('/new', isLoggedIn, animesCtrl.new);
 router.get('/:id', animesCtrl.show);
 router.post('/', isLoggedIn, animesCtrl.create);
 
+
 module.exports = router;

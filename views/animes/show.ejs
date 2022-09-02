@@ -7,34 +7,35 @@
     <div><%= anime.releaseYear %></div>
     <div>Genre: </div>
     <div><%= anime.animeGenre %></div>
-    <div>Is the anime ongoing?: </div>
+    <div>Ongoing Anime?: </div>
     <div><%= anime.onGoing ? 'YEP' : 'Nope' %></div>
-   <!-- synopsis <div><%=   %> </div>-->
+    <div>Synopsis: </div>
+   <div><%= anime.animeSynopsis %></div>
 
-    <!-- start cast list -->
+    <!-- the logged in user can add cast list members to this anime. -->
     <div>Cast:</div>
     <ul>
         <%- anime.cast.map(p =>
                 `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
         ).join('') %>
     </ul>
-    <!-- end cast list -->
+
 </section>
 
-<!-- add to cast form below this comment -->
+<!-- 'add to cast' form below this comment -->
 <form id="add-per-to-cast" action="/animes/<%= anime._id %>/vactors" method="POST">
     <select name="vactorId">
         <%- vactors.map(p =>
                 `<option value="${p._id}">${p.name}</option>`
         ).join('') %>
     </select>
-    <button type="submit">Add to Cast</button>
+    <button type="submit">Add Voice Actors</button>
 </form>
 
 <br><br>
 <h2>Reviews</h2>
 
-<!-- if user exists, show these things-->
+<!-- if user exists and is logged in, the can see the review submit box-->
 <% if (user) {%>
     <form id="add-review-form" method="POST" action="/animes/<%= anime._id %>/reviews">
         <label>Review:</label>
@@ -50,12 +51,12 @@
         <input type="submit" value="Add Review">
     </form>
 <%}%>
-<!-- if not, only show these-->
+<!-- if not, only show reviews from other people-->
 
 
 <% if (anime.reviews.length) { %>
     <table>
-        <thead>
+        <thead> <!-- headers for reviews -->
         <tr>
             <th>User</th>
             <th>Date</th>
@@ -74,9 +75,18 @@
                 <td><%= r.content %></td>
                 <td><%= r.rating %></td>
                 <td>
+
+            <!--if user is logged in and matches the user who left review, they can edit-->
+                    <% if (user && user._id.equals(r.user)) { %>
+                    <form action="/reviews/<%= r._id %>?_method=PUT" method="POST">
+                        <button type="submit">EDIT</button>
+                    </form>
+                    <% } %>
+
+             <!--if user is logged in and matches the user who left review, they can delete-->
                     <% if (user && user._id.equals(r.user)) { %>
                         <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                            <button type="submit">X</button>
+                            <button type="submit">DELETE</button>
                         </form>
                     <% } %>
                 </td>
@@ -89,5 +99,5 @@
         </tbody>
     </table>
 <% } else { %>
-    <h5>No Reviews Yet</h5>
+    <h5>No Reviews Yet. Be the first to leave one!</h5>
 <% } %>
