@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+
 <table id="list">
   <thead>
     <tr>
@@ -6,9 +7,6 @@
       <th>Release<br>Year</th>
       <th>Genre</th>
       <th>Series<br>Ongoing</th>
-      <% if (user) {%> <!--if the user is logged in, they can see the watchlist header-->
-      <th>Watched<br>Anime</th>
-      <%}%>
     </tr>
   </thead>
   <tbody>
@@ -19,11 +17,6 @@
         <td><%= m.animeGenre %></td>
         <td><%= m.onGoing ? 'Ongoing' : 'Finished' %></td>
         <td><a href="/animes/<%= m._id %>">INFO</a></td>
-
-        <% if (user) {%> <!-- if the user is logged in, they can click a checkbox to add the item to their watchlist-->
-        <td><input type="checkbox" name="weebWatching"></td>
-        <%}%>
-
       </tr>
       <% }); %>
     </tbody>

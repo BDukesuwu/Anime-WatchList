@@ -30,7 +30,6 @@ function editReview(req,res) {
 }
 
 
-
 function updateReview(req, res, next) {
   Anime.findOneAndUpdate(
     {id: req.params.id},  // change the review to have the updated proterties

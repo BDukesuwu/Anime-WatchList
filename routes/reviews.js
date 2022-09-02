@@ -10,8 +10,7 @@ router.post("/animes/:id/reviews", reviewsCtrl.create);
 // https://localhost:3000/animes/reviews/123
 router.delete('/reviews/:id', reviewsCtrl.delete);
 
-router.get(':/id', reviewsCtrl.update)
-
-router.get('/:id/edit', reviewsCtrl.edit)
+router.get('/:id/edit', reviewsCtrl.update)
+router.put(':/id', reviewsCtrl.edit)
 
 module.exports = router;

@@ -22,7 +22,7 @@ function newVactor(req, res) {
     });
   })
 }
-
+//find the anime by the id and add the input voice actor to that animes voiceactor list
 function addToCast(req, res){
   Anime.findById(req.params.id, function(error, anime){
     anime.cast.push(req.body.vactorId);
@@ -36,5 +36,5 @@ function addToCast(req, res){
 module.exports = {
   new: newVactor,
   create,
-  addToCast
+  addToCast,
 };

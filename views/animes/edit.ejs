@@ -1,16 +1,11 @@
-<%- include('../partials/header') %>
-<h12>Edit Review</h12>
-<form id="new-form" action="/reviews/<%= reviews.id %> ?_method=PUT" method="POST">
-    
-    <textarea name="animeSynopsis"></textarea>
-    <label>Release Year:</label>
-    <input type="text" name="releaseYear">
-    <label>Genre</label>
-   
-    <label>Is the anime On-Going?:</label>
-    <input type="checkbox" name="onGoing" checked>
+<%- include('../partials/header')%>
 
-    <input type="submit" value="Finish Editing">
-  </form>
-  
-  <%- include('../partials/footer') %>
+<h1>Edit Review</h1>
+
+<form action="/animes/edit<%= manga.id %>/update?_method=PUT" method="POST">
+    <label>Review:</label>
+    <textarea name="content"></textarea>
+    <input type="submit" value="Edit Review">
+</form>
+
+<%- include('../partials/footer')%>
