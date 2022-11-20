@@ -1,10 +1,9 @@
 # Anime watchlist
 
----
-
-## User Stories 
-
-https://github.com/users/BDukesuwu/projects/3
+## Getting Started!
+### See the app's planning and deployment for yourself!
+|[Deployed App](https://anime-watclist-444.herokuapp.com/animes)|[User Stories](https://github.com/users/BDukesuwu/projects/3)|
+|---|---|
 
 ---
 
