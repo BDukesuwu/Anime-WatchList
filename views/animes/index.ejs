@@ -22,10 +22,11 @@
         <td><a href="/animes/<%= m._id %>">INFO</a></td>
 
         <% if (user) {%> <!-- if the user is logged in, they can click a checkbox to add the item to their watchlist-->
-          <td><input type="checkbox" name="weebWatching"> </td>
-          <td><%= m.weebWatching ? 'Watched' : 'No' %></td>
-          
+          <td><input type='checkbox' name='weebWatching'></td>
+          <td><%= m.weebWatching ? 'Watched' : 'Not' %> </td>
         <%}%>
+
+        
       </tr>
       <% }); %>
     </tbody>

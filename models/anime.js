@@ -34,7 +34,7 @@ const animeSchema = new Schema({
     ref: 'Vactor'                         //reference the voiceactors schema for the cast
   }],
   onGoing: { type: Boolean, default: false, required: true }, //its require to add if the anime is still ongoing or not as a yes or no statement
-  weebWatching: { type: Boolean, default: false, required: true},     //if true, the user has watched the anime, if false, the user has not watched it
+  weebWatching: { type: Boolean, default: false },     //if true, the user has watched the anime, if false, the user has not watched it
   reviews: [reviewSchema],                     // grab data from the review schema to display here under the anime
   animeSynopsis: String,
 }, {

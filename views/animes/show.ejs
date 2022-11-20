@@ -8,6 +8,7 @@
         <th>Genre:</th>
         <th>Ongoing Anime?:</th>
         <th>Synopsis: </th>
+        <th>Have you watched this?</th>
     </tr>
 </thead>
 
@@ -18,10 +19,11 @@
     <td><%= anime.animeGenre %></td>
     <td><%= anime.onGoing ? 'YEP' : 'Nope' %></td>
    <td><%= anime.animeSynopsis %></td>
+   <td><%= anime.weebWatching ? 'YEP' : 'Nope' %></td>
 </tr>
 </tbody>
 
-    <!-- the logged clerin user can add cast list members to this anime. -->
+    <!-- the logged in user can add cast list members to this anime. -->
     <div>Cast:</div>
     <ul>
         <%- anime.cast.map(p =>
