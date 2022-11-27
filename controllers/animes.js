@@ -28,16 +28,6 @@ function newAnime(req, res) {
   res.render('animes/new', { title: 'Add Anime' });
 }
 
-// async function isCompletedTodo(req, res) {
-//   console.log(req.body._id)
-//   const updatetodo = await Todo.findOne({_id:req.body._id})
-//   updatetodo.isCompleted = true
-//   console.log(updatetodo, "this is the controller")
-//   await updatetodo.save()
-//   res.json(updatetodo)
-// }
-
-
 function create(req, res) {
   // convert any onGoing anime checkbox of nothing or "on" to boolean
   req.body.onGoing = !!req.body.onGoing;
@@ -56,5 +46,4 @@ module.exports = {
   show,
   new: newAnime,
   create,
-  isCompletedTodo,
 };
