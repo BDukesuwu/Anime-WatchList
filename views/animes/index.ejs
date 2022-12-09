@@ -24,19 +24,24 @@
         <td><a href="/animes/<%= m._id %>">INFO</a></td>
 
         <% if (user) {%> <!-- if the user is logged in, they can click a checkbox to add the item to their watchlist-->
-          <td><input type='checkbox' name='weebWatching'>
-          <%= m.weebWatching ? 'Watched' : 'Not' %> </td>
+          
+          <form method="POST" action="/">
+            <td><input type='checkbox' name='weebWatching' value="True" onchange="myFunction(this.value)"/>
+            <%= m.weebWatching ? 'Watched' : 'Not' %> </td>
+        </form>
         <%}%>
-
-        
       </tr>
       <% }); %>
     </tbody>
   </table>
 
-  <script>
+<script>
+  function myFunction(val) {
+    alert("The input value has changed. The new value is: " + val);
+    if (input === true) {
 
-
+    }
+  }
   </script>
   
 <%- include('../partials/footer') %>
