@@ -8,7 +8,9 @@ passport.use(
         clientID: process.env.GOOGLE_CLIENT_ID, //comes from env file
         clientSecret: process.env.GOOGLE_SECRET,
         callbackURL: process.env.GOOGLE_CALLBACK
-      }, function(accessToken, refreshToken, profile, cb) {
+      }, 
+      
+      function(accessToken, refreshToken, profile, cb) {
         User.findOne({ googleId: profile.id }).then(async function(user) { //find the users info when sign in
             if (user) return cb(null, user); //if there is no user account
             try { 

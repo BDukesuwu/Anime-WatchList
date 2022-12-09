@@ -7,6 +7,8 @@ const userSchema = new Schema({
     type: String,
     required: true
 },
+email: String,
+avatar: String,
 }, {
   timestamps: true      //log when the account is created
 });
