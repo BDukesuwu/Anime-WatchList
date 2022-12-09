@@ -2,7 +2,7 @@
 
 ## Getting Started!
 ### See the app's planning and deployment for yourself!
-|[Deployed App](https://anime-watclist-444.herokuapp.com/animes)|[User Stories](https://github.com/users/BDukesuwu/projects/3)|
+|[Deployed App](https://anime-watchlist-app.herokuapp.com/animes)|[User Stories](https://github.com/users/BDukesuwu/projects/3)|
 |---|---|
 
 ---
