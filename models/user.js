@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 //each watchlist item should be store on the users watchlist and displayed on the watchlist page
 const watchlistSchema = new Schema({
   watchStatus: String, // where the user selects if watched or not
+  episode: {type: Number, min: 1, max: 13}, // where the user leaves a review. needs to be from 1 - 5, 1 the lowest, 5 the highest
 
 }, {
-  timestamps: true
+  timestamps: true //save time added to watchlist
 });
 
 

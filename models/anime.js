@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 //go into the user data to grab the users information
 const reviewSchema = new Schema({
   content: String,    //where the user will type the review
-  rating: {type: Number, min: 1, max: 5, default: 5}, // where the user leaves a review. needs to be from 1 - 5, 1 the lowest, 5 the highest
+  rating: {type: Number, min: 1, max: 5}, // where the user leaves a review. needs to be from 1 - 5, 1 the lowest, 5 the highest
   user: {type: Schema.Types.ObjectId, ref: 'User'},   //grab users object id  
   userName: String,   //display the user's name with the review
   userAvatar: String    //display the users avatar/profile picture with the review
