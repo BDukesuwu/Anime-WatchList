@@ -9,6 +9,8 @@ const userSchema = new Schema({
 },
 email: String,
 avatar: String,
+weebWatched: String,
+
 }, {
   timestamps: true      //log when the account is created
 });

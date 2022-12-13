@@ -24,6 +24,7 @@ function show(req, res) {
     });
 }
 
+//create a new anime
 function newAnime(req, res) {
   res.render('animes/new', { title: 'Add Anime' });
 }

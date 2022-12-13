@@ -15,33 +15,40 @@
     </tr>
   </thead>
   <tbody>
-    <% animes.forEach(function(m) { %>
+    <% animes.forEach(function(m) { %> <!--make one like this for watchlist index page too-->
       <tr>
-        <td><%= m.title %></td>
+        <td><a href="/animes/<%= m._id %>"><%= m.title %></a></td>
         <td><%= m.releaseYear %></td>
         <td><%= m.animeGenre %></td>
         <td><%= m.onGoing ? 'Ongoing' : 'Finished' %></td>
-        <td><a href="/animes/<%= m._id %>">INFO</a></td>
+        <td><%= m.animeSynopsis %> </td>
 
-        <% if (user) {%> <!-- if the user is logged in, they can click a checkbox to add the item to their watchlist-->
-          
-          <form method="POST" action="/">
-            <td><input type='checkbox' name='weebWatching' value="True" onchange="myFunction(this.value)"/>
-            <%= m.weebWatching ? 'Watched' : 'Not' %> </td>
-        </form>
-        <%}%>
+        <% if (user) {%> <!-- if the user is logged in, they can click a btn to add the item to their watchlist-->
+            <td><a href="watchlist/form">watch</href></td>
+               
+            <td><%= m.weebWatching %></td>
+          <%}%>
       </tr>
+      
       <% }); %>
-    </tbody>
   </table>
 
 <script>
-  function myFunction(val) {
-    alert("The input value has changed. The new value is: " + val);
-    if (input === true) {
-
-    }
+  function showForm() {
+    document.getElementById('watchedForm').style.display = 'hidden';
   }
-  </script>
+
+  function closeForm() {
+    document.getElementById("watchedForm").style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  let modal = document.getElementById('loginPopup');
+  if (event.target == modal) {
+    closeForm();
+  }
+}
+</script>
   
 <%- include('../partials/footer') %>
