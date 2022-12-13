@@ -14,6 +14,14 @@ const reviewSchema = new Schema({
   timestamps: true
 });
 
+//make a schema to hold watchlist anime
+//each watchlist item should be store on the users watchlist and displayed on the watchlist page
+const watchlistSchema = new Schema({
+  content: String, // where the user selects if watched or not
+}, {
+  timestamps: true
+});
+
 // make a new schema to hold each anime
 //each anime needs a title, a release year, a rating, a synapsis, and if its still ongoing or ended.
 const animeSchema = new Schema({
@@ -34,6 +42,7 @@ const animeSchema = new Schema({
     ref: 'Vactor'                         //reference the voiceactors schema for the cast
   }],
   onGoing: { type: Boolean, default: false, required: true }, //its require to add if the anime is still ongoing or not as a yes or no statement
+  weebWatching: {watchlistSchema},     //if true, the user has watched the anime, if false, the user has not watched it
   reviews: [reviewSchema],                     // grab data from the review schema to display here under the anime
   animeSynopsis: String,
 }, {
