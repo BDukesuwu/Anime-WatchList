@@ -81,7 +81,7 @@
 
 - [ ] Add functuonality to the checklist to add items to the watchlist
 - [ ] Add function that stores the updated review and displays it
-- [ ] Add photos and links to go watch the anime on Crunchyroll
+- [ ] Add API
 
 ## Credits
 
