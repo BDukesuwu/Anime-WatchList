@@ -73,7 +73,7 @@
 
 ## Hurdles
 
-- My first reaction is to look for bigger issues and check stack overflow. I wasted hours because of this when the issue was me missing one letter. (anime needed to say animes) In the future, I think I should first check for small and simple mishaps before searching for bigger problems, that way if its a simple typo, I search for it and catch it early on and not after 5 hopurs on stack overflow
+- My first reaction is to look for bigger issues and check stack overflow. I wasted hours because of this when the issue was me missing one letter. (anime needed to say animes) In the future, I think I should first check for small and simple mishaps before searching for bigger problems, that way if its a simple typo, I search for it and catch it early on and not after 5 hours on stack overflow
 
 - UPDATE.
 
