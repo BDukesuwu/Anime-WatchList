@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
-require('dotenv').config(); // for .env file
-require('./config/database.js');
+require('dotenv').config(); // Load environment variables
+
+require('./config/database.js');  // imports Mongoose connection
 require('./config/passport.js');
 var methodOverride = require('method-override');
 
@@ -38,18 +39,32 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next){ //next means in every subsequent request, we need to do this
-   res.locals.user = req.user;  //to save the information
-   next();    //go to the next function
+app.use(function (req, res, next){ // next means in every subsequent request, we need to do this
+   res.locals.user = req.user;  // to save the information
+   next();    // go to the next function
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Define the Google authentication routes
+app.get('/auth/google', passport.authenticate('google', {
+    scope: ['profile', 'email'], // Specify the scopes you need
+}));
+
+// Callback route that Google redirects to after successful authentication
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/' }), // Redirect to home on failure
+    function(req, res) {
+        // Successful authentication, redirect to your desired route
+        res.redirect('/'); // Change this to the route you want to redirect after login
+    }
+);
 
 app.use('/', indexRouter);
 app.use('/animes', animesRouter);
 app.use('/', reviewsRouter);
 app.use('/', vactorsRouter);
-app.use('/', watchlistRouter )
+app.use('/', watchlistRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
