@@ -1,11 +1,24 @@
 const Anime = require('../models/anime');
 const Vactor = require('../models/vactor');
+const animeApi = require('../services/animeApi'); // Import the anime API service
 
 function index(req, res) {
   Anime.find({}, function(err, animes) {
     res.render('animes/index', { title: 'All Anime', animes });
   });
 }
+
+// Function to fetch and display the anime list from the API
+async function index(req, res) {
+  try {
+      const animeList = await animeApi.fetchAnimeList(); // Fetch anime list from API
+      res.render('animes/index', { title: 'Anime List', animeList }); // Render the anime list view
+  } catch (error) {
+      console.error('Error fetching anime list:', error); // Log errors
+      res.redirect('/error'); // Redirect to an error page
+  }
+}
+
 
 function show(req, res) {
   // Find the cast that belongs to the anime
