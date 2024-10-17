@@ -44,7 +44,7 @@ function updateReview(req, res, next) {
   
   Anime.findOneAndUpdate(
     { 'reviews._id': req.params.id }, // Update the specific review in the reviews array by matching its ID.
-    { $set: { 'reviews.$.content': req.body.content, 'reviews.$.rating': req.body.rating } },// Set the content and rating fields of the matched review to the new values from req.body.
+    { $set: { 'reviews.$.content': req.body.content, 'reviews.$.rating': req.body.rating } }, // Set the content and rating fields of the matched review to the new values from req.body.
     { new: true },                     // Return the updated document
     function(err, anime) {
       if (err || !anime) {
