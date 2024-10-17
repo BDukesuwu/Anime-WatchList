@@ -46,7 +46,7 @@
 <br><br>
 <h2>Reviews</h2>
 
-<!-- if user exists and is logged in, the can see the review submit box-->
+<!-- if user exists and is logged in, they can see the review submit box-->
 <% if (user) {%>
     <form id="add-review-form" method="POST" action="/animes/<%= anime._id %>/reviews">
         <label>Review:</label>
@@ -92,7 +92,7 @@
                     <% if (user && user._id.equals(r.user)) { %>
 
                         <!--form to edit your review-->
-                        <form id="hidden-edit">
+                        <form action="/animes/<%= anime._id %>/reviews/<%= r._id %>?_method=PUT" method="POST" id="hidden-edit"
                             <label>Edit Review</label>
                             <br>
                             <textarea name="content"></textarea>
@@ -115,11 +115,7 @@
                     btn.addEventListener('click', () => {
                     const form = document.getElementById('hidden-edit');
 
-                    if (form.style.display === 'none') {
-                        form.style.display = 'block'; //show the form 
-                    } else {
-                        form.style.display = 'none'; // hide teh form
-                    }
+                    form.style.display = form.style.display === 'none' ? 'block' : 'none'; // Toggle form visibility
                     });
                     </script>
 

@@ -23,7 +23,7 @@ function create(req, res) {
 //need a function for editing a review, but the user must be
 //logged in and can't edit a review not posted by them
 function editReview(req,res) {
-  Anime.findOne({id:req.params.id}, function(err, reviews) {
+  Anime.findOne({_id:req.params.id}, function(err, reviews) {
     if (err || !anime) return res.redirect('/animes');
     res.render(`/animes/${anime._id}`, {title: "Edit Review", reviews});
   });
@@ -32,14 +32,16 @@ function editReview(req,res) {
 
 function updateReview(req, res, next) {
   Anime.findOneAndUpdate(
-    {id: req.params.id},  // change the review to have the updated proterties
-    req.body,
-    {new: true}, //old is returned by default, return the new document instead (with the update)
-  function(err, reviews) {
-    if (err || !anime) return res.redirect('/animes')
-    res.redirect(`/animes/${anime._id}`, reviews);
-    });
+    { 'reviews._id': req.params.id }, // Look for the specific review ID
+    { $set: req.body },               // Use $set to update the properties of the review
+    { new: true },                    // Return the updated anime document
+    function(err, anime) {
+      if (err || !anime) return res.redirect('/animes'); // Redirect if there's an error or anime not found
+      res.redirect(`/animes/${anime._id}`); // Redirect to the updated anime's show view
+    }
+  );
 }
+
 
 
 // Include the next parameter - used for error handling in the catch
