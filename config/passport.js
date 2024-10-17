@@ -1,40 +1,42 @@
 const passport = require('passport');
-const { findById } = require('../models/user');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const User = require('../models/user');
+const User = require('../models/user'); // Ensure the path to your User model is correct
 
 passport.use(
     new GoogleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID, //comes from env file
+        clientID: process.env.GOOGLE_CLIENT_ID, // comes from .env file
         clientSecret: process.env.GOOGLE_SECRET,
-        callbackURL: process.env.GOOGLE_CALLBACK
-      }, 
-      
-      function(accessToken, refreshToken, profile, cb) {
-        User.findOne({ googleId: profile.id }).then(async function(user) { //find the users info when sign in
-            if (user) return cb(null, user); //if there is no user account
-            try { 
-                user = await User.create({   //create a user to save to the database
-                  name: profile.displayName, //ask for display name
-                  googleId: profile.id,       //make the user an id
-                  email: profile.emails[0].value, //ask for default email address
-                  avatar: profile.photos[0].value //ask for photo, access default (google) picture
+        callbackURL: process.env.GOOGLE_CALLBACK // should match the registered redirect URI
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        // Find user by Google ID
+        User.findOne({ googleId: profile.id }).then(async function(user) {
+            if (user) return cb(null, user); // User exists, return the user
+
+            try {
+                // Create a new user if not found
+                user = await User.create({
+                    name: profile.displayName, // User's display name
+                    googleId: profile.id,      // Google ID
+                    email: profile.emails[0].value, // User's email
+                    avatar: profile.photos[0].value // User's avatar
                 });
-                return cb(null, user);
-              } catch (err) {
-                return cb(err); //if something goes wrong return the error
-              }
-        })
-      }
-    ));
-
-    passport.serializeUser(function(user,cb){
-        cb(null, user._id)
-    });
-
-
-    passport.deserializeUser(function (userId, cb) {
-        User.findById(userId).then(function (user) {
-            cb(null, user);
+                return cb(null, user); // Return the new user
+            } catch (err) {
+                return cb(err); // Return error if something goes wrong
+            }
         });
+    })
+);
+
+// Serialize user for session storage
+passport.serializeUser(function(user, cb) {
+    cb(null, user._id); // Store user ID in the session
+});
+
+// Deserialize user from session
+passport.deserializeUser(function(id, cb) {
+    User.findById(id).then(user => {
+        cb(null, user); // Retrieve user based on ID
     });
+});
