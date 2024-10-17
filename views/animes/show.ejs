@@ -44,6 +44,8 @@
 </form>
 
 <br><br>
+
+
 <h2>Reviews</h2>
 
 <!-- if user exists and is logged in, they can see the review submit box-->
@@ -92,29 +94,26 @@
                     <% if (user && user._id.equals(r.user)) { %>
 
                         <!--form to edit your review-->
-                        <form action="/animes/<%= anime._id %>/reviews/<%= r._id %>?_method=PUT" method="POST" id="hidden-edit"
+                        <form action="/animes/<%= anime._id %>/reviews/<%= r._id %>?_method=PUT" method="POST" id="hidden-edit">
                             <label>Edit Review</label>
                             <br>
-                            <textarea name="content"></textarea>
+                            <textarea name="content"><%= r.content %></textarea> <!-- Prefill with existing content -->
                             <select name="rating">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1" <%= r.rating === 1 ? 'selected' : '' %>>1</option>
+                                <option value="2" <%= r.rating === 2 ? 'selected' : '' %>>2</option>
+                                <option value="3" <%= r.rating === 3 ? 'selected' : '' %>>3</option>
+                                <option value="4" <%= r.rating === 4 ? 'selected' : '' %>>4</option>
+                                <option value="5" <%= r.rating === 5 ? 'selected' : '' %>>5</option>
                             </select>
-                                <button type="submit">Submit Changes</button>
+                            <button type="submit">Submit Changes</button>
                         </form>
 
                     <button id="btn">EDIT</button>
 
-                        <script>
-                            
-                        const btn = document.getElementById('btn');
-
+                <script>
+                    const btn = document.getElementById('btn');
                     btn.addEventListener('click', () => {
                     const form = document.getElementById('hidden-edit');
-
                     form.style.display = form.style.display === 'none' ? 'block' : 'none'; // Toggle form visibility
                     });
                     </script>
