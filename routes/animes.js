@@ -7,7 +7,7 @@ router.get('/', animesCtrl.index);
 router.get('/new', isLoggedIn, animesCtrl.new);
 router.get('/:id', animesCtrl.show);
 router.post('/', isLoggedIn, animesCtrl.create);
-router.put('/animes/:animeId/reviews/:id', animeController.updateReview);
+router.put('/animes/:animeId/reviews/:id', animesCtrl.updateReview);
 
 
 module.exports = router;

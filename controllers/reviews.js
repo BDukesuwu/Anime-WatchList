@@ -1,10 +1,12 @@
-const req = require('express/lib/request');
-const res = require('express/lib/response');
 const Anime = require('../models/anime');
 
 function create(req, res) {
   // Find the anime to embed the review within
   Anime.findById(req.params.id, function(err, anime) {
+    if (err) {
+      console.error(err);
+      return res.redirect('/animes');
+    }
 
     // Add the user-centric info to req.body (the new review)
     req.body.user = req.user._id;
@@ -13,52 +15,57 @@ function create(req, res) {
 
     // Push the subdoc for the review
     anime.reviews.push(req.body);
+    
     // Always save the top-level document (not subdocs)
     anime.save(function(err) {
+      if (err) {
+        console.error(err);
+        return res.redirect(`/animes/${anime._id}`);
+      }
       res.redirect(`/animes/${anime._id}`);
     });
   });
 }
 
-//need a function for editing a review, but the user must be
-//logged in and can't edit a review not posted by them
-function editReview(req,res) {
-  Anime.findOne({_id:req.params.id}, function(err, reviews) {
+// Function for editing a review
+function editReview(req, res) {
+  Anime.findById(req.params.animeId, function(err, anime) {
     if (err || !anime) return res.redirect('/animes');
-    res.render(`/animes/${anime._id}`, {title: "Edit Review", reviews});
+    
+    const review = anime.reviews.id(req.params.id);
+    res.render('editReview', { title: "Edit Review", anime, review });
   });
 }
 
-
 function updateReview(req, res, next) {
   Anime.findOneAndUpdate(
-    { 'reviews._id': req.params.id }, // Look for the specific review ID
-    { $set: req.body },               // Use $set to update the properties of the review
-    { new: true },                    // Return the updated anime document
+    { 'reviews._id': req.params.id }, // Match the review ID
+    { $set: req.body },                // Update the review fields
+    { new: true },                     // Return the updated document
     function(err, anime) {
-      if (err || !anime) return res.redirect('/animes'); // Redirect if there's an error or anime not found
-      res.redirect(`/animes/${anime._id}`); // Redirect to the updated anime's show view
+      if (err || !anime) {
+        console.log('Error or anime not found:', err); // Log error for debugging
+        return res.redirect('/animes'); // Redirect on error
+      }
+      res.redirect(`/animes/${anime._id}`); // Redirect to updated anime page
     }
   );
 }
 
-
-
-// Include the next parameter - used for error handling in the catch
 function deleteReview(req, res, next) {
-  Anime.findOne({'reviews._id': req.params.id}).then(function(anime) { //find review and its id
-    const reviews = anime.reviews.id(req.params.id); 
-    if (!reviews.user.equals(req.user._id)) return res.redirect(`/animes/${anime._id}`); // Ensure that the review was created by the logged in user
-    reviews.remove();                          // Remove the review using the remove method of the subdoc
+  Anime.findOne({ 'reviews._id': req.params.id }).then(function(anime) { // Find review by its ID
+    const review = anime.reviews.id(req.params.id); 
+    if (!review.user.equals(req.user._id)) return res.redirect(`/animes/${anime._id}`); // Ensure the review was created by the logged-in user
+    review.remove();                          // Remove the review
     anime.save().then(function() {            // Save the updated anime
       res.redirect(`/animes/${anime._id}`);   // Redirect back to the anime's show view
-    }).catch(function(err) {                  // Let Express display an error
-      return next(err);                       // res.redirect(`/animes/${anime._id}`);
+    }).catch(function(err) {                  // Handle errors
+      return next(err);
     });
   });
 }
 
-
+// Export all functions from this controller
 module.exports = {
   create,
   delete: deleteReview,
