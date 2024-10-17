@@ -41,19 +41,16 @@ function editReview(req, res) {
 // Function to update a review in the database
 function updateReview(req, res, next) {
   // Find the anime and update the review by its ID
-  console.log('Updating review:', req.params.id); // Log the review ID being updated
   
   Anime.findOneAndUpdate(
-    { 'reviews._id': req.params.id }, // Match the review ID
-    { $set: { 'reviews.$.content': req.body.content, 'reviews.$.rating': req.body.rating } }, // Update content and rating
+    { 'reviews._id': req.params.id }, // Update the specific review in the reviews array by matching its ID.
+    { $set: { 'reviews.$.content': req.body.content, 'reviews.$.rating': req.body.rating } },// Set the content and rating fields of the matched review to the new values from req.body.
     { new: true },                     // Return the updated document
     function(err, anime) {
       if (err || !anime) {
         console.log('Error or anime not found:', err); // Log error if something goes wrong
         return res.redirect('/animes'); // Redirect to anime list if there's an error
       }
-      console.log('Review updated for anime:', anime._id); // Log successful update
-
       res.redirect(`/animes/${anime._id}`); // Redirect to the updated anime's page
     }
   );

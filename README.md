@@ -69,7 +69,8 @@
 
 ## Wins
 
-- I got C,R,D working, and am very close to finishing U. Just so happened to run out of time just as the answer was almost in my hands.
+- Successfully implemented Full CRUD operations!
+- Google OAuth and My database are running smoothly.
 
 ## Hurdles
 
